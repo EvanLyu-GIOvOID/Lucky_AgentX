@@ -4,57 +4,6 @@
 
 AgentX 是一个基于大模型 (LLM) 和多能力平台 (MCP) 的智能 Agent 构建平台。它致力于简化 Agent 的创建流程，让用户无需复杂的流程节点或拖拽操作，仅通过自然语言和工具集成即可打造个性化的智能 Agent。
 
-## 🚀 快速开始
-
-### 🐳 一键部署（推荐）
-
-#### 步骤1：准备配置文件
-
-```bash
-# 下载配置文件模板
-curl -O https://raw.githubusercontent.com/lucky-aeon/AgentX/master/.env.example
-# 复制并编辑配置
-cp .env.example .env
-# 根据需要修改 .env 文件中的配置
-```
-
-#### 步骤2：启动服务
-
-```bash
-# 一键启动（包含前端+后端+数据库+消息队列）
-# 🎯 智能适配：本地、内网、服务器环境均可使用相同命令
-docker run -d \
-  --name agentx \
-  -p 3000:3000 \
-  -p 8088:8088 \
-  -p 5432:5432 \
-  -p 5672:5672 \
-  -p 15672:15672 \
-  --env-file .env \
-  -v agentx-data:/var/lib/postgresql/data \
-  -v agentx-storage:/app/storage \
-  -v /var/run/docker.sock:/var/run/docker.sock\
-  --add-host=localhost:host-gateway \
-  ghcr.nju.edu.cn/lucky-aeon/agentx:latest
-```
-
-> 🚀 **智能部署**：无需区分本地或服务器环境，前端自动检测当前访问IP并连接对应的后端服务
-
-#### 访问服务
-
-| 服务 | 地址 | 说明 |
-|------|------|------|
-| **主应用** | http://localhost:3000 | 前端界面 |
-| **后端API** | http://localhost:8088 | API服务 |
-| **数据库** | http://localhost:5432 | PostgreSQL（可选） |
-| **RabbitMQ** | http://localhost:5672 | 消息队列（可选） |
-| **RabbitMQ管理** | http://localhost:15672 | 队列管理界面（可选） |
-
-**默认登录账号**：
-
-- 管理员：`admin@agentx.ai` / `admin123`
-- 测试用户：`test@agentx.ai` / `test123`
-
 #### 🌐 部署场景示例
 
 **本地开发**：
